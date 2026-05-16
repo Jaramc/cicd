@@ -54,6 +54,8 @@ jobs:
           port: 22
           script: |
             echo "Conexión exitosa al VPS"
+            REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+            CONTAINER_NAME=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
 
             docker login ghcr.io -u "${{ github.actor }}" -p ${{ secrets.TOKEN}} 
             docker pull ghcr.io/${{ github.repository }}:latest
