@@ -37,10 +37,8 @@ jobs:
       - name: Build and push Docker image
         run: |
           # Construir la imagen Docker usando el Dockerfile
-          docker build -f Dockerfile -t ghcr.io/${{ github.repository }}:latest .
-
-          # Subir la imagen construida a GHCR
-          docker push ghcr.io/${{ github.repository }}:latest
+          docker build -f Dockerfile -t ghcr.io/jaramc/cicd:latest .
+          docker push ghcr.io/jaramc/cicd:latest
 
   deploy:
     needs: build-and-push
